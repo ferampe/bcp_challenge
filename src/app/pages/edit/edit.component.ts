@@ -15,6 +15,8 @@ export class EditComponent implements OnInit {
   agencias: Agencia[] = [];
   agencia!:Agencia;
   index!:number;
+  lat:any;
+  lon:any;
 
   showMensaje:boolean = false;
 
@@ -23,6 +25,8 @@ export class EditComponent implements OnInit {
   loadingTemplate!: TemplateRef<any>;
   loading:boolean = false;
   public ngxLoadingAnimationTypes = ngxLoadingAnimationTypes;
+
+
 
   form = this.fb.group({
     nombreAgencia: [''],
@@ -55,6 +59,14 @@ export class EditComponent implements OnInit {
       this.form.controls.latitud.setValue(this.agencias[this.index].lat);
       this.form.controls.longitud.setValue(this.agencias[this.index].lon);
 
+      this.lat = this.agencias[this.index].lat;
+      this.lon = this.agencias[this.index].lon
+
+      // this.center = {lat: this.lat, lng: this.lon,};
+      // this.options.center = {lat: this.lat, lng: this.lon,};
+
+     
+
     })   
 
   }
@@ -69,6 +81,9 @@ export class EditComponent implements OnInit {
       this.agencias[this.index].distrito = this.form.controls.distrito.value;
       this.agencias[this.index].lat = this.form.controls.latitud.value;
       this.agencias[this.index].lon = this.form.controls.longitud.value;
+
+      this.lat =  this.form.controls.latitud.value;
+      this.lon = this.form.controls.longitud.value;
 
       localStorage.setItem('agencias', JSON.stringify(this.agencias));
       this.showMensaje = true;

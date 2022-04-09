@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxLoadingModule } from "ngx-loading";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { NgxLoadingModule } from "ngx-loading";
     AppRoutingModule,
     RouterModule,
     ReactiveFormsModule,
-    NgxLoadingModule
+    NgxLoadingModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
