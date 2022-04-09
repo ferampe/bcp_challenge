@@ -1,10 +1,11 @@
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy  } from '@angular/core';
 
 import { DATA_AGENCIAS } from 'src/app/data/DataAgencias';
 import { Agencia } from 'src/app/interfaces/Agencias';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
@@ -12,12 +13,13 @@ import { Agencia } from 'src/app/interfaces/Agencias';
 export class ListComponent implements OnInit {
 
   public agencias: Agencia[] = [];
+  Math:any;
 
-  constructor() { }
+  constructor() { 
+    this.Math = Math;
+  }
 
   ngOnInit(): void {
-
-    
 
     if( localStorage.getItem('agencias') === null){
       this.agencias = DATA_AGENCIAS;
@@ -25,7 +27,7 @@ export class ListComponent implements OnInit {
       let data = JSON.parse(localStorage.getItem("agencias") as string);
       this.agencias = data;
     }
-    
+  
     localStorage.setItem('agencias', JSON.stringify(this.agencias));
   }
 
