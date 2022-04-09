@@ -1,0 +1,22 @@
+<app-menu titulo="Agencias"></app-menu>
+<div class="fluid-container">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let agencia of agencias; let i = index">
+            <div class="d-flex">
+                <div class="px-2 pt-2">
+                    <!-- <img src='assets/img/bcp{{ramdomImg}}.jpg' class="perfil" width="35px" height="35px"> -->
+                </div>
+
+                <div>
+                    <a [routerLink]="['/edit', i]"><span class="h5 pr-3">{{ agencia.agencia }}</span></a> <br>
+                    <span>{{agencia.distrito}}</span> <br>
+                    <span class="text-muted text-small">{{agencia.direccion}}</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <a href="#" class="float">
+        <i class="fa fa-plus my-float"></i>
+    </a>
+</div>
